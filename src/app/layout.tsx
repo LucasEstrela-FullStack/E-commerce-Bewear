@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <h1>Zika</h1>
+
     </html>
   );
 }

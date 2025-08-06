@@ -1,5 +1,3 @@
-import { AppWindowIcon, CodeIcon } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -18,7 +16,10 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 
-const Authentication = () => {
+import SignInForm from "./components/sign-in-form"
+import SignUpForm from "./components/sign-up-form"
+
+const Authentication = async () => {
   return (
     <div className="flex w-full max-w-sm flex-col gap-6 p-5">
       <Tabs defaultValue="sign-in">
@@ -27,52 +28,10 @@ const Authentication = () => {
           <TabsTrigger value="sign-up">Criar Conta</TabsTrigger>
         </TabsList>
         <TabsContent value="sign-in">
-          <Card>
-            <CardHeader>
-              <CardTitle>Entrar</CardTitle>
-              <CardDescription>Faça login para continuar.</CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-name">Email</Label>
-                <Input id="email" placeholder="Digite seu Email" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-username">Senha</Label>
-                <Input id="password" placeholder="Digite sua Senha"/>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Entar</Button>
-            </CardFooter>
-          </Card>
+          <SignInForm />
         </TabsContent>
         <TabsContent value="sign-up">
-          <Card>
-            <CardHeader>
-              <CardTitle>Criar Conta</CardTitle>
-              <CardDescription>
-                Crie uma conta para continuar.
-            </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="name">Nome</Label>
-                <Input id="name" placeholder="Digite seu Nome" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" placeholder="Digite seu Email" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="password">Senha</Label>
-                <Input id="password" placeholder="Digite sua Senha" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Criar</Button>
-            </CardFooter>
-          </Card>
+          <SignUpForm />
         </TabsContent>
       </Tabs>
     </div>

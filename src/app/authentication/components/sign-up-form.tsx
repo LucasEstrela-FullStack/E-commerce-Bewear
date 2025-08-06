@@ -66,7 +66,10 @@ const SignUpForm = () => {
         onError: (error) => {
           if(error.error.code === "USER_ALREADY_EXISTS") {
             toast.error("Email ja cadastrado.");
-            form.setError("email", {
+            form.setError("password", {
+              message: "Email ou senha já cadastrados.",
+            })
+            return  form.setError("email", {
             message: "Email ja cadastrado.",
           });
           }

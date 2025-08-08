@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { ShoppingBasketIcon } from "lucide-react";
 
-const Cart = () => {
+export const Cart = () => {
  return <Sheet>
     <SheetTrigger asChild>
         <Button variant="outline" size="icon">

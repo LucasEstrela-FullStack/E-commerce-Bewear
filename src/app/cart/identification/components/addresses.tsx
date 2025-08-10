@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "sonner";
 import { useCreateShippingAddress } from "@/hooks/mutations/use-create-shipping-address";
 import { useUserAddresses } from "@/hooks/queries/use-user-addresses";
+import { shippingAddressTable } from "@/db/schema"
 
 const formSchema = z.object({
   email: z.email("E-mail inválido"),
@@ -31,10 +32,15 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const Addresses = () => {
+interface AddressesProps {
+  shippingAddresses: (typeof shippingAddressTable.$inferSelect)[];
+}
+  const Addresses = ({ shippingAddresses }: AddressesProps) => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
   const createShippingAddressMutation = useCreateShippingAddress();
-  const { data: addresses, isLoading } = useUserAddresses();
+  const { data: addresses, isLoading } = useUserAddresses({
+    initialData: shippingAddresses,
+  });
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
